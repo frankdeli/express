@@ -1,5 +1,6 @@
 // Add Express
 const express = require("express");
+const bodyparser = require("body-parser")
 
 // Initialize Express
 const app = express();
@@ -7,6 +8,10 @@ const cors = require("cors")
 const c_main = require('./app/controllers/controller_main')
 
 app.use(cors())
+
+app.use(bodyparser.urlencoded({ extended: true }))
+app.use(bodyparser.json())
+
 // Create GET request
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
